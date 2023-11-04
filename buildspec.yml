@@ -1,12 +1,18 @@
 version: 0.2
 
+env:
+    parameter-store:
+        AWS_ACCESS_KEY_ID_PARAM: /CodeBuild/AWS_ACCESS_KEY_ID
+        AWS_SECRET_ACCESS_KEY_PARAM: /CodeBuild/AWS_SECRET_ACCESS_KEY
+
 phases:
   install:
     commands:    
       - echo Configuring AWS CLI credentials and default region
-      - aws configure set aws_access_key_id AKIAWKW36LXIRUL2AHH3
-      - aws configure set aws_secret_access_key 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
+      - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_PARAM
+      - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_PARAM
       - aws configure set default.region us-east-1
+      
   pre_build:
     commands:
       - echo Logging in to Amazon ECR
