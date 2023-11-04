@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: URL_DATABASE
-              value: "postgresql://postgres:5mG$1**8abcd@abc-jobs-postgres.cy4wad57lz7h.us-east-1.rds.amazonaws.com:5432/postgres"
+              value: ${DATABASE_CONNECTION}
 ---
 kind: Service
 apiVersion: v1
