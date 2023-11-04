@@ -27,6 +27,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          URI_PROFILES: ${{ secrets.URI_PROFILES }}
       - name: Generate coverage report
         run: |
           python -m coverage xml -i 
