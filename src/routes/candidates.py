@@ -11,7 +11,7 @@ import ast
 
 router = APIRouter()
 
-SKILLS_URL = "http://a48085841837c4e16a907ae6d6147724-1134772844.us-east-1.elb.amazonaws.com"
+SKILLS_URL = "https://a48085841837c4e16a907ae6d6147724-1134772844.us-east-1.elb.amazonaws.com"
 
 @router.get("", response_model=schemas.ResponseDto, status_code=status.HTTP_200_OK)
 async def get_candidates(soft_skills:str=None, technical_skills:str=None, personality_traits:str=None, db:Session = Depends(get_db)):    
