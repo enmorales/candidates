@@ -3,6 +3,8 @@ from sqlalchemy.orm import relationship
 from src.database import Base
 import enum
 
+candidatesid = "candidates.candidates.id"
+
 class LanguageLevel(str,enum.Enum):
     A0 = "A0"
     A1 = "A1"
@@ -64,7 +66,7 @@ class Lenguage(Base):
     language = Column(String)
     language_level = Column(Enum(LanguageLevel), index=True)
 
-    candidate_id = Column(Integer, ForeignKey("candidates.candidates.id"))
+    candidate_id = Column(Integer, ForeignKey(candidatesid))
     candidate = relationship("Candidate", back_populates="languages")
 
     __table_args__ = ({"schema": "candidates"},)
@@ -79,7 +81,7 @@ class Education(Base):
     degree = Column(Enum(AcademicLevel), index=True)
     state = Column(Enum(StateEducation), index=True)
 
-    candidate_id = Column(Integer, ForeignKey("candidates.candidates.id"))
+    candidate_id = Column(Integer, ForeignKey(candidatesid))
     candidate = relationship("Candidate", back_populates="educations")
 
     __table_args__ = ({"schema": "candidates"},) 
@@ -95,7 +97,7 @@ class WorkExperience(Base):
     job_type = Column(Enum(EmploymentType), index=True)
     is_actual = Column(Boolean, default=False)
 
-    candidate_id = Column(Integer, ForeignKey("candidates.candidates.id"))
+    candidate_id = Column(Integer, ForeignKey(candidatesid))
     candidate = relationship("Candidate", back_populates="workexperiences")
 
     __table_args__ = ({"schema": "candidates"},)
@@ -107,7 +109,7 @@ class Profile(Base):
     curriculum = Column(String)
     description = Column(String)
 
-    candidate_id = Column(Integer, ForeignKey("candidates.candidates.id"))
+    candidate_id = Column(Integer, ForeignKey(candidatesid))
     candidate = relationship("Candidate", back_populates="profiles")
 
     __table_args__ = ({"schema": "candidates"},) 
