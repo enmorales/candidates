@@ -4,8 +4,11 @@ phases:
   install:
     commands:
       - echo Configuring AWS CLI credentials and default region
-      - aws configure set aws_access_key_id AKIAWKW36LXIRUL2AHH3
-      - aws configure set aws_secret_access_key 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
+      - SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id $SECRET_ID)
+      - MY_ACCESS_KEY=$(echo $SECRET_JSON | jq -r '.SecretString' | jq -r '.mySecretKey')
+      - MY_SECRET_ACCES_KEY=$(echo $SECRET_JSON | jq -r '.SecretString' | jq -r '.mySecretKey')
+      - aws configure set aws_access_key_id echo $MY_SECRET_ACCES_KEY
+      - aws configure set aws_secret_access_key echo $MY_ACCESS_KEY
       - aws configure set default.region us-east-1
   pre_build:
     commands:
