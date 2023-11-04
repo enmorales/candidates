@@ -28,6 +28,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           URI_PROFILES: ${{ secrets.URI_PROFILES }}
+          SKILLS_URL: ${{ secrets.SKILLS_URL }}
       - name: Generate coverage report
         run: |
           python -m coverage xml -i 
