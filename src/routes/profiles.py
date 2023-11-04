@@ -10,18 +10,7 @@ router = APIRouter()
    
 @router.get("", response_model=schemas.ResponseDto, status_code=status.HTTP_200_OK)
 async def get_profilesx(db: Session = Depends(get_db)):
-    #profiles = db.query(models.Profile).all()
     return schemas.ResponseDto(message = "SUCCESS", data = "", errors ="")
-
-# @router.get("/{candidate_id}", response_model=schemas.ResponseDto, status_code=status.HTTP_200_OK)
-# async def get_profile(candidate_id:int=None, db: Session = Depends(get_db)):
-#     profiles = db.query(models.Profile).filter(models.Profile.candidate_id == candidate_id).all()
-
-#     if not profiles:
-#         response_error =  jsonable_encoder(schemas.ResponseDto(message = "FAILED", data = "" , errors ="Not found"))
-#         return JSONResponse(content=response_error, status_code=404)
-    
-#     return schemas.ResponseDto(message = "SUCCESS", data = jsonable_encoder(profiles) , errors ="")     
 
 @router.post("", response_model=schemas.ResponseDto, status_code=status.HTTP_200_OK)
 async def create_profile(request: Request, profiles: schemas.Profile, db: Session=Depends(get_db)):
