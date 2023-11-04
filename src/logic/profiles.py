@@ -1,6 +1,6 @@
 import requests
 
-URI_PROFILES = "http://a48085841837c4e16a907ae6d6147724-1134772844.us-east-1.elb.amazonaws.com"
+URI_PROFILES = "https://a48085841837c4e16a907ae6d6147724-1134772844.us-east-1.elb.amazonaws.com"
 
 def get_candidates_profiles(data:any):
     skills_endpoint = f"{URI_PROFILES}/api/profiles/candidates"
